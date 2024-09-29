@@ -6,21 +6,18 @@
     <title>회원가입</title>
     <style>
     	body {
-	    display: flex;
-	    flex-direction: column;
-	    height: 100vh;
-	    margin: 0;
-	    background-color: #f9f9f9;
-
+		    padding-top: 40px;
+		    margin: auto;
 		}
-
+		.join_title{
+			font-size: 20px;
+    		font-weight: bold;
+		}
 		/* 로그인 폼의 전체적인 스타일 */
 		.content {
-		    width: 100%;
-		    max-width: 300px;
-		    margin: auto;
-		    padding: 30px;
-		    text-align: left;
+		   margin: 0 auto;
+    		padding: 60px 0;
+            width: 360px;
 		}
 		
 		/* 로고 스타일 */
@@ -39,7 +36,7 @@
 		}
 		
 		/* SNS 로그인 타이틀 스타일 */
-		.sns_loginTitle {
+		.sns_login {
 		    font-size: 12px;
 		    margin: 35px 0 15px;
 		    color: #757575;
@@ -58,24 +55,52 @@
 			cursor: pointer; 		/* 마우스 커서를 포인터로 변경 */
 		}
 		#facebook_login{ 
-			background-color: blue;
-			background: url('./img/facebook_logo.png') no-repeat center center; /* 이미지 경로 삽입 */
-		    background-size: 40px 40px; /* 이미지 크기 조정 */
-		    border: none; /* 테두리 제거 */
+		background-color: blue;
+		background: url('/web/user/img/facebook_logo.png') no-repeat center center; /* 이미지 경로 삽입 */
+	    background-size: 40px 40px; /* 이미지 크기 조정 */
+	    border: none; /* 테두리 제거 */
 		}
 		#kakao_login{ 
 			background-color: yellow;
-			background: url('./img/kakao_logo.png') no-repeat center center; /* 이미지 경로 삽입 */
+			background: url('/web/user/img/kakao_logo.png') no-repeat center center; /* 이미지 경로 삽입 */
 		    background-size: 40px 40px; /* 이미지 크기 조정 */
 		    border: none; /* 테두리 제거 */
 		}
 		#naver_login{ 
 			background-color: green;
-			background: url('./img/naver_logo.png') no-repeat center center; /* 이미지 경로 삽입 */
+			background: url('/web/user/img/naver_logo.png') no-repeat center center; /* 이미지 경로 삽입 */
 		    background-size: 40px 40px; /* 이미지 크기 조정 */
 		    border: none; /* 테두리 제거 */
 		}
-		
+		.btn_element{
+			margin-bottom: 30px;
+   			padding-top: 2px;
+		}
+		.input_element{
+		    margin-bottom: 12px;
+		    font-size: 16px;
+		    line-height: 20px;
+		    font-weight: 700;
+		    color: #2F3438;
+		    letter-spacing: -0.3px;
+		    word-break: keep-all;
+		}
+		.input_title{
+		    margin-bottom: 12px;
+   			font-size: 16px;
+   			line-height: 20px;
+		    font-weight: 700;
+		    color: #2F3438;
+		    letter-spacing: -0.3px;
+		    word-break: keep-all;
+		}
+		.input_context{
+			margin-bottom: 10px;
+		    font-size: 11px;
+		    line-height: 18px;
+		    color: #828C94;
+		    letter-spacing: -0.3px;
+		}
 		/* 입력 필드 스타일 */
 		input {
 		    width: 100%;
@@ -86,7 +111,18 @@
 		    box-sizing: border-box;
 		    border-radius: 6px 6px 6px 6px;
 		}
-		
+		.btn_id{
+			font-weight: bold;
+		    background-color: rgb(247, 248, 250);
+		    color: rgb(194, 200, 204);
+		    border: 2px solid  rgb(194, 200, 204);
+		    border-color: rgb(218, 220, 224);
+		    padding: 12px;
+		    font-size: 17px;
+		    width: 100%;
+		    border-radius: 6px;
+		    margin-top: 10px;
+		 }
 		/* 회원가입 버튼에 대한 스타일 */
 		.btn {
 			font-weight: bold;
@@ -104,17 +140,30 @@
 		.btn:hover {
 		    background-color: #2aa2c6;
 		}
+		.login_qna{
+			color: #424242;
+		    font-size: 15px;
+		    text-align: center;
+		    margin-top: 30px;
+		}
+		a {
+			text-decoration: underline;
+		    font-weight: bold;
+		    display: inline-block;
+		    padding-left: 10px;
+		}
+		
     </style>
 </head>
 <body>
-	<div class="content">
-		<div id="homelogo">
+	<div id="homelogo">
             <a href="/index.html">
                 오늘의집
             </a>
-        </div>
+    </div>
+	<div class="content">
 		<div>
-			<h2>회원가입</h2>
+			<h1 class="join_title">회원가입</h1>
 			<!-- 간편로그인 -->
 	        <div class="sns_login">
 	            <p class="sns_loginTitle">
@@ -131,50 +180,57 @@
 		    <form action="/user/UserJoin.us" method="post" name="joinForm">
 		        <!-- 아이디 입력 -->
 		        <div class="input_element">
-		        	<label>아이디
-		        		<div><input type="text" name="user_id" id="user_id" placeholder="아이디" required></div>
+		        	<label class="input_title">
+		        		<p>아이디</p>
+		        		<input type="text" name="user_id" id="user_id" placeholder="아이디" required>
 		        	</label>
 		        </div>
 		        <!-- 아이디 중복인증 -->
-		        <div class="input_element">
-		        	<button class="btn_idValidation" onclick="checkId(); return false;">아이디 중복확인</button>
+		        <div class="btn_element">
+		        	<button class="btn_id" onclick="checkId(); return false;">아이디 중복확인</button>
 		        	<p id="result"></p>
 		        </div>
 		        <!-- 비밀번호 입력 -->
 		        <div class="input_element">
-		        	<label>비밀번호
-		        		<div>영문, 숫자를 포함한 8자 이상의 비밀번호를 입력해주세요.</div>
+		        	<label class="input_title">
+		        		<p>비밀번호</p>
+		        		<div class="input_context">영문, 숫자를 포함한 8자 이상의 비밀번호를 입력해주세요.</div>
 		        		<input type="password" name="password"  id="password" placeholder="비밀번호" required>
 		        	</label>
 		        </div>
 		        <!-- 비밀번호 확인 -->
 		        <div class="input_element">
-		        	<label>비밀번호 확인
-		        		<div><input type="password" name="password_re"  id="password_re" placeholder="비밀번호 확인" required></div>
+		        	<label class="input_title">
+		        		<p>비밀번호 확인</p>
+		        		<input type="password" name="password_re"  id="password_re" placeholder="비밀번호 확인" required>
 		        	</label>
 		        </div>
 		     	<!-- 이름 입력 -->
 		        <div class="input_element">
-		        	<label>이름
-		        		<div><input type="text" name="name" id="name" placeholder="이름"></div>
+		        	<label class="input_title">
+		        		<p>이름</p>
+		        		<input type="text" name="name" id="name" placeholder="이름">
 		        	</label>
 		        </div>
 		        <!-- 이메일 입력 -->
 		        <div class="input_element">
-		        	<label>이메일
-		        		<div><input type="email" name="email" id="email" placeholder="이메일"></div>
+		        	<label class="input_title">
+		        		<p>이메일</p>
+		        		<input type="email" name="email" id="email" placeholder="이메일">
 		        	</label>
 		        </div>
 		        <!-- 닉네임 입력 -->
 		        <div class="input_element">
-		        	<label>닉네임
-		        		<div><input type="text" name="nickname"  id="nickname" placeholder="별명 (2~20자)"></div>
+		        	<label class="input_title">
+		        		<p>닉네임</p>
+		        		<input type="text" name="nickname"  id="nickname" placeholder="별명 (2~20자)">
 		        	</label>
 		        </div>
 		        <!-- 휴대폰 번호 입력 -->
 		        <div class="input_element">
-		        	<label>휴대폰 번호
-		        		<div><input type="text" name="tel" id="tel" placeholder="휴대폰"></div>
+		        	<label class="input_title">
+		        		<p>휴대폰 번호</p>
+		        		<input type="text" name="tel" id="tel" placeholder="휴대폰">
 		        	</label>
 		        </div>
 		        <!-- 약관 동의 -->
@@ -225,7 +281,7 @@
 		        </div>
 		    </form>
 		    <!-- 로그인 페이지로 돌아가기 -->
-		    <p class="">
+		    <p class="login_qna">
 		    	이미 아이디가 있으신가요? <a href="/user/UserLogin.us">로그인</a>
 		    </p>
 		</div>
